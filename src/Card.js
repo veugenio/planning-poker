@@ -5,13 +5,10 @@ import React from 'react';
 class Card extends React.Component {
   constructor(props) {
     super(props);
-    // this.state = {
-    //   active: props.active
-    // };
     this.activate = this.activate.bind(this);
   }
-  activate(obj) {
-    // this.setState({active: true});
+
+  activate() {
     this.props.onActivate(this.props.value);
   }
 
@@ -21,8 +18,7 @@ class Card extends React.Component {
       className += ' active';
     }
     return (
-      // onClick={this.activate.bind(this)}
-      <div className={className} onClick={this.activate}>
+      <div className={className} onClick={() => this.props.onActivate(this.props.value)}>
         <span className="Value">{this.props.value}</span>
       </div>
     );
