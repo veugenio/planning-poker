@@ -14,7 +14,8 @@ function Player(props) {
       <span className="Avatar">
         <img src={avatar(props.avatar)} alt={props.name} />
       </span>
-      <span>{props.name}</span>
+      <div>{props.name}</div>
+      <small>{props.id}</small>
     </div>
   );
 }

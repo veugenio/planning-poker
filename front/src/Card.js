@@ -5,6 +5,7 @@ function Card (props) {
   if (props.active) {
     className += ' active';
   }
+
   return (
     <div className={className} onClick={() => props.onActivate(props.value)} >
       <span className="Value">{props.value}</span>

@@ -19,6 +19,7 @@ function Deck () {
       return card;
     }));
   };
+
   return (
     <div className="Deck">
       {cards.map(card =>

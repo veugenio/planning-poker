@@ -8,6 +8,9 @@
 .Player.done {
   opacity: .2;
 }
+.Player small {
+  font-size: xx-small;
+}
 
 @keyframes Card-balance {
   from {
