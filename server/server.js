@@ -16,8 +16,8 @@ let clients = [];
 let players = [];
 
 io.on("connection", (socket) => {
-  console.log("New client connected");
-  console.log(socket)
+  console.log("New client connected: ", socket.id);
+  // console.log(socket)
 
   // Connections pool.
   clients.push(socket);
@@ -25,9 +25,20 @@ io.on("connection", (socket) => {
   registerNewPlayer(socket);
 
 
+  socket.on('select-card', value => {
+    console.log('select-card: ', socket.id, value);
+
+    players.forEach(player => {
+      if (player.id === socket.id) {
+        player.value = value;
+      }
+    });
+
+    broadcastPlayers(socket);
+  });
+
   socket.on("disconnect", (data) => {
-    console.log("Client disconnected");
-    console.log(data)
+    console.log("Client disconnected: ", socket.id);
 
     // Update clients id.
     clients = clients.filter(client => client.id !== socket.id);
@@ -45,15 +56,15 @@ const registerNewPlayer = socket => {
 
   players.push({
     name: 'Anonymous',
-    id: socket.id
+    id: socket.id,
+    value: -1
   });
 
   broadcastPlayers(socket);
 }
 
 const broadcastPlayers = socket => {
-  const { id } = socket;
-  clients.filter(client => client.id !== id).forEach(client => {
+  clients.forEach(client => {
     client.emit("FromAPI", { players: players });
   })
 }

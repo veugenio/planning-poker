@@ -1,6 +1,7 @@
 import './Deck.css';
 import Card from './Card.js';
 import { useState } from 'react';
+import Client from './Client.js';
 
 function Deck () {
   const [ cards, setCards ] = useState([
@@ -14,6 +15,7 @@ function Deck () {
     { value: '?', active: 0 }
   ]);
   const select = value => {
+    Client.emit('select-card', value);
     setCards(cards.map(card => {
       card.active = card.value === value;
       return card;

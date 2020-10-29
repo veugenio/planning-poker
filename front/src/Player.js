@@ -9,8 +9,10 @@ const avatar = type => {
 }
 
 function Player(props) {
+  const done =  props.value >= 0 ? 'Player done' : 'Player';
+  console.log(done, props.value);
   return (
-    <div className={'Player done'}>
+    <div className={done}>
       <span className="Avatar">
         <img src={avatar(props.avatar)} alt={props.name} />
       </span>
