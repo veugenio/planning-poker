@@ -1,0 +1,30 @@
+.Deck {
+  animation: Card-balance infinite 6s ease-in-out ;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+}
+.Deck .Card {
+  margin: 0 -2%;
+}
+.Deck .Card:nth-child(1) {
+  
+}
+.Deck .Card:nth-child(2) {
+  
+}
+
+@keyframes Card-balance {
+  from {
+    transform: rotate(0deg);
+    transform: translateY(0);
+  }
+  50% {
+    transform: rotate(3deg);
+    transform: translateY(-10px);
+  }
+  to {
+    transform: rotate(0);
+    transform: translateY(0);
+  }
+}

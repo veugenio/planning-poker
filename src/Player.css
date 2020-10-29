@@ -1,0 +1,25 @@
+.Player {
+  width: 200px;
+  height: 200px;
+  text-align: center;
+  vertical-align: bottom;
+  opacity: .5;
+}
+.Player.done {
+  opacity: .2;
+}
+
+@keyframes Card-balance {
+  from {
+    transform: rotate(0deg);
+    transform: translateY(0);
+  }
+  50% {
+    transform: rotate(3deg);
+    transform: translateY(-10px);
+  }
+  to {
+    transform: rotate(0);
+    transform: translateY(0);
+  }
+}
