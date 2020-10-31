@@ -6,7 +6,7 @@
   transform: scale(0);
   z-index: 9;
   position: fixed;
-  bottom: 25%;
+  bottom: 12rem;
 }
 .Game.init {
   animation: Game-splash forwards .4s ease-in;

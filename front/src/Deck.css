@@ -3,15 +3,17 @@
   display: flex;
   flex-wrap: nowrap;
   justify-content: center;
+  width: 100%;
+  font-size: 2em;
 }
 .Deck .Card {
   margin: 0 -2%;
 }
 .Deck .Card:nth-child(1) {
-  
+  /* transform: rotate(-10deg); */
 }
 .Deck .Card:nth-child(2) {
-  
+  /* transform: rotate(-8deg); */
 }
 
 @keyframes Card-balance {

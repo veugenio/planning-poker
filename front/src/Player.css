@@ -1,26 +1,36 @@
 .Player {
-  width: 200px;
-  height: 200px;
+  width: 10em;
   text-align: center;
   vertical-align: bottom;
   opacity: .5;
   position: relative;
+  font-size: 1.4em;
 }
 .Player.done {
   opacity: .2;
 }
-.Player small {
-  font-size: xx-small;
+.Player p {
+  font-size: 1.4em;
+  margin: .5em 0;
 }
-
+.Player small {
+  font-size: .4em;
+  display: block;
+}
+.Player img {
+  width: 80%;
+}
 .Player .Card {
   transform: scale(.6);
   animation: Player-show-card normal .3s;
   position: absolute;
-  right: 0px;
-  top: 35%;
+  right: 0;
+  top: 3em;
+  font-size: 1.2rem;
 }
-
+.Player .Card p {
+  font-size: 2.6rem;
+}
 @keyframes Player-show-card {
   from {
     transform: scale(.2);

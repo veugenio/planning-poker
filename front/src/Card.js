@@ -12,7 +12,7 @@ function Card (props) {
 
   return (
     <div className={className} onClick={onClick} >
-      <span className="Value">{props.value}</span>
+      <p className="Value">{props.value}</p>
     </div>
   );
 }
