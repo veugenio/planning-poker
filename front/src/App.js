@@ -7,10 +7,12 @@ import Client from './Client.js';
 function App() {
 
   const [ players, setPlayers ] = useState([]);
-  Client.on("FromAPI", data => {
-    setPlayers(data.players);
-  });
-  // useEffect(() => {}, []);
+
+  useEffect(() => {
+    Client.on("players-update", data => {
+      setPlayers(data.players);
+    });
+  }, []);
 
   return (
     <div className="App">

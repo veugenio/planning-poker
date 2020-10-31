@@ -1,4 +1,5 @@
-import Veia from "./logo.svg";
+import Card from "./Card";
+import Veia from "./avatars/veia.svg";
 import './Player.css';
 
 const avatar = type => {
@@ -9,8 +10,8 @@ const avatar = type => {
 }
 
 function Player(props) {
-  const done =  props.value >= 0 ? 'Player done' : 'Player';
-  console.log(done, props.value);
+  const done =  !props.showCard && props.value >= 0 ? 'Player done' : 'Player';
+
   return (
     <div className={done}>
       <span className="Avatar">
@@ -18,6 +19,7 @@ function Player(props) {
       </span>
       <div>{props.name}</div>
       <small>{props.id}</small>
+      { props.showCard ? <Card value={props.value} active={true} /> : '' }
     </div>
   );
 }

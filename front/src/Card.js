@@ -6,8 +6,12 @@ function Card (props) {
     className += ' active';
   }
 
+  const onClick = () => {
+    typeof props.onActivate == 'function' && props.onActivate(props.value);
+  }
+
   return (
-    <div className={className} onClick={() => props.onActivate(props.value)} >
+    <div className={className} onClick={onClick} >
       <span className="Value">{props.value}</span>
     </div>
   );

@@ -65,7 +65,7 @@ const registerNewPlayer = socket => {
 
 const broadcastPlayers = socket => {
   clients.forEach(client => {
-    client.emit("FromAPI", { players: players });
+    client.emit("players-update", { players: players });
   })
 }
 

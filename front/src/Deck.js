@@ -15,7 +15,10 @@ function Deck () {
     { value: '?', active: 0 }
   ]);
   const select = value => {
+
+    // We ca use useEffect(, [cards]) to run this.
     Client.emit('select-card', value);
+
     setCards(cards.map(card => {
       card.active = card.value === value;
       return card;

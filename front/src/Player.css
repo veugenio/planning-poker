@@ -4,12 +4,30 @@
   text-align: center;
   vertical-align: bottom;
   opacity: .5;
+  position: relative;
 }
 .Player.done {
   opacity: .2;
 }
 .Player small {
   font-size: xx-small;
+}
+
+.Player .Card {
+  transform: scale(.6);
+  animation: Player-show-card normal .3s;
+  position: absolute;
+  right: 0px;
+  top: 35%;
+}
+
+@keyframes Player-show-card {
+  from {
+    transform: scale(.2);
+  }
+  to {
+    transform: scale(.6);
+  }
 }
 
 @keyframes Card-balance {
