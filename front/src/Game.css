@@ -1,0 +1,35 @@
+.Game {
+  border-radius: 1em;
+  background: #efefef;
+  padding: 1em;
+  color: rgb(66, 66, 66);
+  transform: scale(0);
+  z-index: 9;
+  position: fixed;
+  bottom: 25%;
+}
+.Game.done {
+  animation: Game-splash forwards .4s ease-in;
+  animation-delay: 1s;
+}
+.Game :first-child {
+  margin-top: .2em;
+}
+.Game button {
+  background: rgb(4, 90, 4);
+  color: #efefef;
+  border: none;
+  padding: 1em;
+  border-radius: 1em;
+
+}
+@keyframes Game-splash {
+  from {
+    transform: scale(6);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1.4);
+    opacity: 1;
+  }
+}

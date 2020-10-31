@@ -17,13 +17,18 @@ let players = [];
 
 io.on("connection", (socket) => {
   console.log("New client connected: ", socket.id);
-  // console.log(socket)
 
   // Connections pool.
   clients.push(socket);
 
   registerNewPlayer(socket);
 
+  socket.on('reset-game', () => {
+    console.log('reset-game: ', socket.id);
+
+    players.forEach(player => player.value = -1);
+    broadcastPlayers(socket);
+  });
 
   socket.on('select-card', value => {
     console.log('select-card: ', socket.id, value);
