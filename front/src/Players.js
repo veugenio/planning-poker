@@ -11,7 +11,7 @@ function Players(props) {
   return (
     <div className="Players">
       { opponents.map(player =>
-        <Player key={player.id} id={player.id} value={player.value} name={player.name} showCard={showCard} />
+        <Player key={player.id} id={player.id} avatar={player.avatar} value={player.value} name={player.name} showCard={showCard} />
       )}
     </div>
   );

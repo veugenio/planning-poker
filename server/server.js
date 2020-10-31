@@ -72,12 +72,14 @@ const resetGame = socket => {
     client.emit("reset-game");
   });
 }
+const defaultAvatar = () => Math.random() > 0.5 ? 'gordo' : 'veia';
 
 const playerAdd = socket => {
   players.push({
     name: 'Anonymous',
     id: socket.id,
-    value: -1
+    value: -1,
+    avatar: defaultAvatar()
   });
 
   broadcastPlayers(socket);

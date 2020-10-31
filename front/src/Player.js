@@ -1,12 +1,14 @@
 import Card from "./Card";
 import Veia from "./avatars/veia.svg";
+import Gordo from "./avatars/gordo.svg";
 import './Player.css';
 
 const avatar = type => {
   const avatars = {
-    'veia': Veia
+    'veia': Veia,
+    'gordo': Gordo
   };
-  return avatars[type ? type : 'veia'];
+  return avatars[type];
 }
 
 function Player(props) {
