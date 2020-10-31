@@ -1,6 +1,6 @@
 import './Deck.css';
 import Card from './Card.js';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Client from './Client.js';
 
 function Deck () {
@@ -15,8 +15,6 @@ function Deck () {
     { value: '?', active: 0 }
   ]);
   const select = value => {
-
-    // We ca use useEffect(, [cards]) to run this.
     Client.emit('select-card', value);
 
     setCards(cards.map(card => {
@@ -24,6 +22,15 @@ function Deck () {
       return card;
     }));
   };
+
+  useEffect(() => {
+    Client.on('reset-game', () => {
+      setCards(cards.map(card => {
+        card.active = 0;
+        return card;
+      }));
+    })
+  }, ['cards']);
 
   return (
     <div className="Deck">

@@ -1,32 +1,37 @@
-const express = require("express");
-const http = require("http");
-const socketIo = require("socket.io");
-
+const app = require('express')();
+const http = require('http').createServer(app);
+const io = require('socket.io')(http);
 const port = process.env.PORT || 4000;
-const index = require("./routes/index");
 
-const app = express();
-app.use(index);
+// Start server.
+http.listen(port, () => console.log(`Listening on port ${port}`));
 
-const server = http.createServer(app);
-
-const io = socketIo(server);
-
+// Global variables.
 let clients = [];
 let players = [];
 
-io.on("connection", (socket) => {
+io.on("connection", socket => {
   console.log("New client connected: ", socket.id);
 
-  // Connections pool.
-  clients.push(socket);
-
-  registerNewPlayer(socket);
+  registerNewClient(socket);
 
   socket.on('reset-game', () => {
     console.log('reset-game: ', socket.id);
 
     players.forEach(player => player.value = -1);
+    broadcastPlayers(socket);
+    resetGame(socket);
+  });
+
+  socket.on('set-name', value => {
+    console.log('set-name: ', socket.id, value);
+
+    players.forEach(player => {
+      if (player.id === socket.id) {
+        player.name = value;
+      }
+    });
+
     broadcastPlayers(socket);
   });
 
@@ -47,18 +52,28 @@ io.on("connection", (socket) => {
 
     // Update clients id.
     clients = clients.filter(client => client.id !== socket.id);
-    // Remove player
-    removePlayer(socket);
+    playerRemove(socket);
   });
 });
 
-const removePlayer = socket => {
-  players = players.filter(player => player.id !== socket.id);
-  broadcastPlayers(socket);
+
+const registerNewClient = socket => {
+  // Connections pool.
+  clients.push(socket);
+  playerAdd(socket);
+}
+const broadcastPlayers = socket => {
+  clients.forEach(client => {
+    client.emit("players-update", { players: players });
+  });
+}
+const resetGame = socket => {
+  clients.forEach(client => {
+    client.emit("reset-game");
+  });
 }
 
-const registerNewPlayer = socket => {
-
+const playerAdd = socket => {
   players.push({
     name: 'Anonymous',
     id: socket.id,
@@ -67,11 +82,7 @@ const registerNewPlayer = socket => {
 
   broadcastPlayers(socket);
 }
-
-const broadcastPlayers = socket => {
-  clients.forEach(client => {
-    client.emit("players-update", { players: players });
-  })
+const playerRemove = socket => {
+  players = players.filter(player => player.id !== socket.id);
+  broadcastPlayers(socket);
 }
-
-server.listen(port, () => console.log(`Listening on port ${port}`));

@@ -1,12 +1,16 @@
 .Game {
   border-radius: 1em;
-  background: #efefef;
+  background: #e6e6e6;
   padding: 1em;
   color: rgb(66, 66, 66);
   transform: scale(0);
   z-index: 9;
   position: fixed;
   bottom: 25%;
+}
+.Game.init {
+  animation: Game-splash forwards .4s ease-in;
+  animation-delay: 1s;
 }
 .Game.done {
   animation: Game-splash forwards .4s ease-in;
@@ -15,14 +19,21 @@
 .Game :first-child {
   margin-top: .2em;
 }
+.Game input,
+.Game button {
+  border: none;
+  border-radius: 1em;
+  padding: 1em;
+}
+.Game input {
+  color: rgb(66, 66, 66);
+}
 .Game button {
   background: rgb(4, 90, 4);
   color: #efefef;
-  border: none;
-  padding: 1em;
-  border-radius: 1em;
-
+  font-weight: bold;
 }
+
 @keyframes Game-splash {
   from {
     transform: scale(6);
