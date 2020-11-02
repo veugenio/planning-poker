@@ -7,9 +7,7 @@
   border-radius: 3%;
   width: 4em;
   height: 5em;
-  transition-duration: .2s;
-  transition-timing-function: ease-in-out;
-  box-shadow: .2rem .2rem 1rem rgba(0,0,0,.5);
+  box-shadow: .2em .2em 1em rgba(0,0,0,.5);
   position: relative;
 }
 .Card.active,
@@ -19,10 +17,10 @@
 .Card.active {
   z-index: 998;
   transform: translateY(-20px);
-  box-shadow: .2rem .2rem 3rem rgba(0,0,0,.5);
+  box-shadow: .2em .2em 3em rgba(0,0,0,.5);
 }
-.Card p {
-  margin-block-start: .6rem;
+.Card .Value {
+  margin-block-start: .2em;
   font-size: 2.6em;
 }
 .Value {
@@ -30,7 +28,7 @@
 }
 .Card:hover {
   z-index: 999;
-  transform: translateY(-40px) scale(1.2) rotate(-5deg);
+  transform: translateY(-2em) scale(1.2) rotate(-5deg);
   box-shadow: .2em .2em 3em rgba(0,0,0,.5);
   background-color: #e2e2e2;
 }

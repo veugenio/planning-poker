@@ -7,6 +7,7 @@
   z-index: 9;
   position: fixed;
   bottom: 12rem;
+  max-width: 60vw;
 }
 .Game.init {
   animation: Game-splash forwards .4s ease-in;
@@ -19,6 +20,13 @@
 .Game :first-child {
   margin-top: .2em;
 }
+.Game form {
+  display: flex;
+  flex-wrap: wrap;
+}
+.Game p {
+  flex: 100%;
+}
 .Game input,
 .Game button {
   border: none;
@@ -27,11 +35,13 @@
 }
 .Game input {
   color: rgb(66, 66, 66);
+  flex: 9999;
 }
 .Game button {
   background: rgb(4, 90, 4);
   color: #efefef;
   font-weight: bold;
+  flex: 1;
 }
 
 @keyframes Game-splash {

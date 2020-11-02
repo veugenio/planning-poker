@@ -19,8 +19,7 @@ function Player(props) {
       <span className="Avatar">
         <img src={avatar(props.avatar)} alt={props.name} />
       </span>
-      <p>{props.name}<small>{props.id}</small></p>
-      
+      <p className="Name">{props.name}<small>{props.id}</small></p>
       { props.showCard ? <Card value={props.value} active={true} /> : '' }
     </div>
   );

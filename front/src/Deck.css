@@ -4,10 +4,10 @@
   flex-wrap: nowrap;
   justify-content: center;
   width: 100%;
-  font-size: 2em;
+  font-size: 1.4em;
 }
 .Deck .Card {
-  margin: 0 -2%;
+  margin: 0 -.7em;
 }
 .Deck .Card:nth-child(1) {
   /* transform: rotate(-10deg); */

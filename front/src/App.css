@@ -1,3 +1,13 @@
+* {
+  box-sizing: border-box;
+}
+p, input, button, form {
+  font-size: 1em;
+}
+div, input, button {
+  transition-duration: .2s;
+  transition-timing-function: ease-in-out;
+}
 .App {
   text-align: center;
   background-color: #282c34;
@@ -7,14 +17,14 @@
   align-items: center;
   justify-content: center;
   color: white;
-  font-size: 10px;
+  font-size: 2vw;
 }
 .App .Deck {
   position: fixed;
   bottom: -1em;
 }
 
-@media (min-width: 600px) {
+@media (min-width: 800px) {
   .App {
     font-size: 16px;
   }
